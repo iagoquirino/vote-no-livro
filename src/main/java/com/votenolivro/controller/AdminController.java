@@ -21,13 +21,13 @@ public class AdminController extends ProjetoController {
 	private PessoaServiceImpl pessoaService;
 	
 	@RequestMapping(value = "/cargaLivros", method = RequestMethod.GET)
-	public String adminpage(){
+	public String cargaLivros(){
 		livroService.cargaLivros();
 		return "admin";
 	}
 	
 	@RequestMapping(value = "/cargaPessoas", method = RequestMethod.GET)
-	public String add(@RequestParam("nome")String nome){
+	public String cargaPessoas(){
 		pessoaService.cargaPessoa();
 		return "admin";
 	}
