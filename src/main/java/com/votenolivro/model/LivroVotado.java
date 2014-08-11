@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -23,10 +24,11 @@ public class LivroVotado implements Serializable {
 	private Long id;
 	
 	@OneToOne
+	@JoinColumn(name="LIVRO_ID", nullable=false)
 	private Livro livro;
 	
 	private int totalVoto = 1;
-
+	
 	public LivroVotado() {
 		super();
 	}
@@ -62,4 +64,5 @@ public class LivroVotado implements Serializable {
 	public void adicionarVoto() {
 		this.totalVoto = this.getTotalVoto()+1;
 	}
+	
 }
