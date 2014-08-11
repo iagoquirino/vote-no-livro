@@ -5,6 +5,7 @@
 <votenolivro:layout>
 			<section>
 				<p>Oppps!! Aconteceu algo!!<BR>Vamos verificar para que isto não aconteça!</p>
+				<p>${err}</p>
 				<div class="mockup-content">
 					<p>Pea horseradish azuki bean lettuce avocado asparagus okra.</p>
 					<p>Kohlrabi radish okra azuki bean corn fava bean mustard tigernut juccama green bean celtuce collard greens avocado quandong.</p>
