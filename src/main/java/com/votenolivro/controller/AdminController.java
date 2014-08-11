@@ -11,7 +11,7 @@ import com.votenolivro.service.LivroService;
 
 @Controller
 @RequestMapping(value = "admin")
-public class AdminController {
+public class AdminController extends ProjetoController {
 
 	@Autowired
 	private LivroService livroService;
