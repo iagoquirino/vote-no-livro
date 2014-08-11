@@ -1,5 +1,7 @@
 package com.votenolivro.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,12 @@ import javax.persistence.SequenceGenerator;
 
 @Entity(name = "livroVotado")
 @SequenceGenerator(sequenceName = "SEQ_LIVROVOT" , name = "LIVROVOT_SEQ",allocationSize=1,initialValue=1)
-public class LivroVotado {
+public class LivroVotado implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1294162046064272961L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="LIVROVOT_SEQ")

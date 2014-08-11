@@ -42,6 +42,15 @@ public class LivroController extends ProjetoController {
 		return LIVRO;
 	}
 	
+	@RequestMapping(value = "/teste")
+	public String teste(ModelMap model)
+	{
+		model.addAttribute("livros", livroConverter.convertToListVO(livroService.listarTodos()));
+		model.addAttribute("livro", new LivroVO());
+		model.addAttribute("pessoa", new Pessoa());
+		return LIVRO;
+	}
+	
 	@RequestMapping(value = "/votar", method = RequestMethod.POST)
     public String votar( @ModelAttribute(value = "livro") LivroVO livroVO, ModelMap model) {
 		List<LivroVO> livros = new ArrayList<LivroVO>();

@@ -17,7 +17,7 @@ public class Livro implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7565583520996463756L;
+	private static final long serialVersionUID = -6843784565494627761L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_LIVRO")

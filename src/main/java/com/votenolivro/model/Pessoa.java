@@ -20,7 +20,7 @@ public class Pessoa implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3665830807552300735L;
+	private static final long serialVersionUID = -8147702006081300144L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PESSOA_SEQ")
