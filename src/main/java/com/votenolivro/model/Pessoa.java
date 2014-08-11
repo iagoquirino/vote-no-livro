@@ -3,17 +3,19 @@ package com.votenolivro.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 
 
-@Entity(name = "pessoa")
+@Entity
 @SequenceGenerator(sequenceName = "SEQ_PESSOA" , name = "PESSOA_SEQ",allocationSize=1,initialValue=1)
 public class Pessoa implements Serializable {
 
@@ -30,7 +32,8 @@ public class Pessoa implements Serializable {
 	
 	private String email;
 	
-	@OneToMany(fetch =FetchType.LAZY)
+	@OneToMany(fetch =FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="pessoa_id")
 	private List<LivroVotado> livros;
 
 	public Pessoa() {

@@ -10,7 +10,7 @@ import javax.persistence.SequenceGenerator;
 
 
 
-@Entity(name = "livro")
+@Entity
 @SequenceGenerator(sequenceName = "SEQ_LIVRO" , name = "SEQ_LIVRO",allocationSize=1,initialValue=1)
 public class Livro implements Serializable{
 

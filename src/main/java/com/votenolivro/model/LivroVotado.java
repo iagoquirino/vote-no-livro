@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
-@Entity(name = "livroVotado")
+@Entity
 @SequenceGenerator(sequenceName = "SEQ_LIVROVOT" , name = "LIVROVOT_SEQ",allocationSize=1,initialValue=1)
 public class LivroVotado implements Serializable {
 
