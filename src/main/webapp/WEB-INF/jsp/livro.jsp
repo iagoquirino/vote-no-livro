@@ -20,11 +20,12 @@
 							<input type="submit" class="btn btn-1 btn-1b" value="Votar" />
 						</form:form>
 						<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed active">
-							<span class="icon icon-close">Close the dialog</span>
+							
 							<button type="button">Ver Ranking!</button>
 							<div class="morph-content">
 								<div>
 									<div class="content-style-form content-style-form-1">
+										<span class="icon icon-close">Close the dialog</span>									
 										<h2>Seus Dados!</h2>
 										<form:form method="post" action="${computarvotos}" commandName="pessoa" class="form-vertical">
 											<p><label>Nome</label>

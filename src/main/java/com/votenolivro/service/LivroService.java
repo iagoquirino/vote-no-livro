@@ -92,4 +92,8 @@ public class LivroService {
 		livro.setNome(nome);
 		livroRepository.save(livro);
 	}
+
+	public List<Livro> listarTodos() {
+		return livroRepository.listAll();
+	}
 }

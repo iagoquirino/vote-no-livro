@@ -8,7 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
-@Entity(name = "Livro")
+
+
+@Entity
 @SequenceGenerator(sequenceName = "SEQ_LIVRO" , name = "SEQ_LIVRO",allocationSize=1,initialValue=1)
 public class Livro implements Serializable{
 

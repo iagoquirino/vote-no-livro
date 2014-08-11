@@ -3,8 +3,6 @@ package com.votenolivro.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,18 +34,12 @@ public class LivroController extends ProjetoController {
 	private static final String REDIRECT_RANKING = "redirect:/ranking/mostrar-ranking/";
 	
 	@RequestMapping(value = "/")
-	public String init(ModelMap model,HttpServletRequest request)
+	public String init(ModelMap model)
 	{
 		model.addAttribute("livros", livroConverter.convertToListVO(livroService.listarLivrosParaVotar()));
 		model.addAttribute("livro", new LivroVO());
 		model.addAttribute("pessoa", new Pessoa());
 		return LIVRO;
-	}
-	
-	@RequestMapping(value = "/teste")
-	public String test() throws Exception
-	{
-		throw new Exception();
 	}
 	
 	@RequestMapping(value = "/votar", method = RequestMethod.POST)

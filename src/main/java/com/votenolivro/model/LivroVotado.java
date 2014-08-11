@@ -15,7 +15,7 @@ public class LivroVotado {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="LIVROVOT_SEQ")
 	private Long id;
 	
-	@OneToOne(targetEntity = Livro.class)
+	@OneToOne
 	private Livro livro;
 	
 	private int totalVoto = 1;
