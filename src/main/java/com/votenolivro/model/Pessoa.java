@@ -33,7 +33,6 @@ public class Pessoa implements Serializable {
 	private String email;
 	
 	@OneToMany(fetch =FetchType.LAZY,cascade = CascadeType.ALL)
-	@JoinColumn(name="pessoa_id")
 	private List<LivroVotado> livros;
 
 	public Pessoa() {
