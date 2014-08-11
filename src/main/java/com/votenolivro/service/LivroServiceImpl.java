@@ -7,11 +7,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.votenolivro.model.Livro;
 import com.votenolivro.repository.interfaces.ILivroRepository;
 
 @Service
+@Transactional
 public class LivroServiceImpl {
 	@Autowired
 	private ILivroRepository livroRepository;
@@ -90,7 +92,7 @@ public class LivroServiceImpl {
 	public void adicionar(String nome) {
 		Livro livro = new Livro();
 		livro.setNome(nome);
-		livroRepository.merge(livro);
+		livroRepository.save(livro);
 	}
 
 	public List<Livro> listarTodos() {

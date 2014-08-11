@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.votenolivro.model.Livro;
 import com.votenolivro.model.LivroVotado;
@@ -14,6 +15,7 @@ import com.votenolivro.model.Pessoa;
 import com.votenolivro.repository.interfaces.IPessoaRepository;
 
 @Service
+@Transactional
 public class PessoaServiceImpl {
 	
 	@Autowired
