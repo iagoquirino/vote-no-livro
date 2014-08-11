@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -52,7 +53,6 @@ public class LivroControllerTest extends BaseControllerTest{
 		controller.setPessoaService(pessoaService);
 	}
 	
-	
 	@Test
 	public void deveMostrarTelaPrincipalDeVotacao() throws Exception{
     	String JSP_PAGE = "livro";
@@ -93,7 +93,6 @@ public class LivroControllerTest extends BaseControllerTest{
 		getMockMvc().perform(get(LIVRO_CALL))
                 .andExpect(status().isOk())
                 .andExpect(forwardedUrl(JSP_PAGE));
-		
 	}
 	
 }

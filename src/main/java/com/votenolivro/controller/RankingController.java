@@ -1,5 +1,6 @@
 package com.votenolivro.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.votenolivro.converters.LivroConverter;
 import com.votenolivro.converters.PessoaConverter;
+import com.votenolivro.model.Pessoa;
 import com.votenolivro.model.vo.LivroVO;
 import com.votenolivro.model.vo.PessoaVO;
 import com.votenolivro.service.LivroServiceImpl;
@@ -36,7 +38,7 @@ public class RankingController extends ProjetoController{
 	
 	@RequestMapping(value = "/mostrar-ranking/{idPessoa}", method = RequestMethod.GET)
 	public String verRanking(@PathVariable(value = "idPessoa") Long idPessoa,ModelMap model) throws Exception{
-		model.addAttribute("livrosVotados", null);
+		model.addAttribute("livrosVotados", new ArrayList<LivroVO>());
 		return processarRanking(idPessoa, model);
 	}
 
@@ -47,7 +49,9 @@ public class RankingController extends ProjetoController{
 	
 	private String processarRanking(Long idPessoa, ModelMap model) {
 		if(idPessoa != null){
-			model.addAttribute("pessoa", pessoaConverter.convertToVO(pessoaService.getPessoa(idPessoa)));	
+			Pessoa pessoa = pessoaService.getPessoa(idPessoa);
+			PessoaVO pessoaVO = pessoaConverter.convertToVO(pessoa);
+			model.addAttribute("pessoa", pessoaVO);	
 		}
 		model.addAttribute("livros", livroConverter.convertToListVO(livroService.listarRanking()));
 		return RANKING;

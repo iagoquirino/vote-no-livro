@@ -8,6 +8,7 @@ public class ProjetoController {
 
 	@ExceptionHandler(value=Exception.class)
     public String tratarErro(Exception exception, HttpServletResponse response){
+		exception.printStackTrace();
 		return "erro";
     }
 	
