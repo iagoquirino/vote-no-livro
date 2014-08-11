@@ -46,7 +46,9 @@ public class RankingController extends ProjetoController{
 	}
 	
 	private String processarRanking(Long idPessoa, ModelMap model) {
-		model.addAttribute("pessoa", pessoaConverter.convertToVO(pessoaService.getPessoa(idPessoa)));
+		if(idPessoa != null){
+			model.addAttribute("pessoa", pessoaConverter.convertToVO(pessoaService.getPessoa(idPessoa)));	
+		}
 		model.addAttribute("livros", livroConverter.convertToListVO(livroService.listarRanking()));
 		return RANKING;
 	}
@@ -73,5 +75,9 @@ public class RankingController extends ProjetoController{
 	
 	public void setLivroService(LivroServiceImpl livroService) {
 		this.livroService = livroService;
+	}
+	
+	public void setPessoaConverter(PessoaConverter pessoaConverter) {
+		this.pessoaConverter = pessoaConverter;
 	}
 }

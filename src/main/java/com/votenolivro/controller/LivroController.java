@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.votenolivro.converters.LivroConverter;
+import com.votenolivro.converters.PessoaConverter;
 import com.votenolivro.model.Pessoa;
 import com.votenolivro.model.vo.LivroVO;
+import com.votenolivro.model.vo.PessoaVO;
 import com.votenolivro.service.LivroServiceImpl;
 import com.votenolivro.service.PessoaServiceImpl;
 
@@ -28,6 +30,9 @@ public class LivroController extends ProjetoController {
 	private LivroServiceImpl livroService;
 	@Autowired
 	private PessoaServiceImpl pessoaService;
+	@Autowired
+	private PessoaConverter pessoaConverter;
+	
 	
 	private static final String LIVRO = "livro";
 	private static final String REDIRECT = "redirect:/livro/";
@@ -38,7 +43,7 @@ public class LivroController extends ProjetoController {
 	{
 		model.addAttribute("livros", livroConverter.convertToListVO(livroService.listarLivrosParaVotar()));
 		model.addAttribute("livro", new LivroVO());
-		model.addAttribute("pessoa", new Pessoa());
+		model.addAttribute("pessoa", new PessoaVO());
 		return LIVRO;
 	}
 	
@@ -47,7 +52,7 @@ public class LivroController extends ProjetoController {
 	{
 		model.addAttribute("livros", livroConverter.convertToListVO(livroService.listarTodos()));
 		model.addAttribute("livro", new LivroVO());
-		model.addAttribute("pessoa", new Pessoa());
+		model.addAttribute("pessoa", new PessoaVO());
 		return LIVRO;
 	}
 	
@@ -63,13 +68,13 @@ public class LivroController extends ProjetoController {
 	}
 	
 	@RequestMapping(value = "/computarvotos", method = RequestMethod.POST)
-    public String computarVotos( @ModelAttribute(value = "pessoa") Pessoa pessoa, ModelMap model) throws Exception {
+    public String computarVotos( @ModelAttribute(value = "pessoa") PessoaVO pessoa, ModelMap model) throws Exception {
 		List<LivroVO> livros = new ArrayList<LivroVO>();
 		if(model.containsAttribute("livrosVotados")){
 			livros = (List<LivroVO>)model.get("livrosVotados");
 		}
-		Pessoa pessoaPersitida = pessoaService.processarVotos(pessoa,livroConverter.convertToListModel(livros));
-		return REDIRECT_RANKING+pessoaPersitida.getId();
+		Pessoa pessoaPersitida = pessoaService.processarVotos(pessoaConverter.convertToModel(pessoa),livroConverter.convertToListModel(livros));
+		return REDIRECT_RANKING+pessoaPersitida.getId().toString();
 	}
 	
 	
@@ -85,5 +90,9 @@ public class LivroController extends ProjetoController {
 	
 	public void setPessoaService(PessoaServiceImpl pessoaService) {
 		this.pessoaService = pessoaService;
+	}
+	
+	public void setPessoaConverter(PessoaConverter pessoaConverter) {
+		this.pessoaConverter = pessoaConverter;
 	}
 }

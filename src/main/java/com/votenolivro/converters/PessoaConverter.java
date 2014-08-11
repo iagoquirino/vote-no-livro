@@ -29,4 +29,13 @@ public class PessoaConverter {
 	public void setLivroConverter(LivroConverter livroConverter) {
 		this.livroConverter = livroConverter;
 	}
+
+	public Pessoa convertToModel(PessoaVO pessoaVO) {
+		if(pessoaVO == null){
+			return null;	
+		}
+		Pessoa pessoa = new Pessoa();
+		BeanUtils.copyProperties(pessoaVO,pessoa, ignores);
+		return pessoa;
+	}
 }
