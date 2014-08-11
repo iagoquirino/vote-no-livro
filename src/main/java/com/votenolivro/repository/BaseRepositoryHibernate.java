@@ -92,7 +92,7 @@ public abstract class BaseRepositoryHibernate<T> extends HibernateDaoSupport imp
 			getHibernateTemplate().save(t);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DAOException( e, getEntityClass(), "erro.dao.findcriteria" );
+			throw new DAOException( e, getEntityClass(), "erro.dao.persist" );
 		}
 		return t;
 	}
@@ -102,7 +102,7 @@ public abstract class BaseRepositoryHibernate<T> extends HibernateDaoSupport imp
 			getHibernateTemplate().saveOrUpdate(t);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DAOException( e, getEntityClass(), "erro.dao.findcriteria" );
+			throw new DAOException( e, getEntityClass(), "erro.dao.persist" );
 		}
 		return t;
 	}
@@ -112,7 +112,7 @@ public abstract class BaseRepositoryHibernate<T> extends HibernateDaoSupport imp
 			getHibernateTemplate().merge(t);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DAOException( e, getEntityClass(), "erro.dao.findcriteria" );
+			throw new DAOException( e, getEntityClass(), "erro.dao.persist" );
 		}
 		return t;
 	}
@@ -122,7 +122,7 @@ public abstract class BaseRepositoryHibernate<T> extends HibernateDaoSupport imp
 			getHibernateTemplate().saveOrUpdateAll( listT );
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DAOException( e, getEntityClass(), "erro.dao.findcriteria" );
+			throw new DAOException( e, getEntityClass(), "erro.dao.persist" );
 		}
 		return listT;
 	}
