@@ -90,7 +90,7 @@ public class LivroServiceImpl {
 	public void adicionar(String nome) {
 		Livro livro = new Livro();
 		livro.setNome(nome);
-		livroRepository.save(livro);
+		livroRepository.merge(livro);
 	}
 
 	public List<Livro> listarTodos() {
