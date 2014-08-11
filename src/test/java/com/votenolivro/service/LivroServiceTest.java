@@ -20,7 +20,7 @@ public class LivroServiceTest {
 	@Mock
 	private ILivroRepository livroRepository;
 	
-	private LivroService livroService = new LivroService();
+	private LivroServiceImpl livroService = new LivroServiceImpl();
 	
 	private List<Livro> todosOsLivros = getAllLivros();
 	

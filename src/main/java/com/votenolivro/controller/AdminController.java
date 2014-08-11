@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.votenolivro.service.LivroService;
+import com.votenolivro.service.LivroServiceImpl;
 
 
 @Controller
@@ -14,7 +14,7 @@ import com.votenolivro.service.LivroService;
 public class AdminController extends ProjetoController {
 
 	@Autowired
-	private LivroService livroService;
+	private LivroServiceImpl livroService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String adminpage(){
@@ -25,6 +25,10 @@ public class AdminController extends ProjetoController {
 	public String add(@RequestParam("nome")String nome){
 		livroService.adicionar(nome);
 		return "redirect:/admin/";
+	}
+	
+	public void setLivroService(LivroServiceImpl livroService) {
+		this.livroService = livroService;
 	}
 	
 }

@@ -15,8 +15,8 @@ import com.votenolivro.converters.LivroConverter;
 import com.votenolivro.converters.PessoaConverter;
 import com.votenolivro.model.vo.LivroVO;
 import com.votenolivro.model.vo.PessoaVO;
-import com.votenolivro.service.LivroService;
-import com.votenolivro.service.PessoaService;
+import com.votenolivro.service.LivroServiceImpl;
+import com.votenolivro.service.PessoaServiceImpl;
 
 @Controller
 @RequestMapping(value = "ranking")
@@ -26,9 +26,9 @@ public class RankingController extends ProjetoController{
 	private static final String RANKING = "ranking";
 	
 	@Autowired
-	private PessoaService pessoaService;
+	private PessoaServiceImpl pessoaService;
 	@Autowired
-	private LivroService livroService;
+	private LivroServiceImpl livroService;
 	@Autowired
 	private LivroConverter livroConverter;
 	@Autowired
@@ -63,7 +63,7 @@ public class RankingController extends ProjetoController{
 		return Arrays.asList(new LivroVO(1, "rsds", 2));
 	}
 
-	public void setPessoaService(PessoaService pessoaService) {
+	public void setPessoaService(PessoaServiceImpl pessoaService) {
 		this.pessoaService = pessoaService;
 	}
 	
@@ -71,7 +71,7 @@ public class RankingController extends ProjetoController{
 		this.livroConverter = livroConverter;
 	}
 	
-	public void setLivroService(LivroService livroService) {
+	public void setLivroService(LivroServiceImpl livroService) {
 		this.livroService = livroService;
 	}
 }

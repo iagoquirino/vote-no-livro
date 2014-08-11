@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.votenolivro.converters.LivroConverter;
 import com.votenolivro.model.Pessoa;
 import com.votenolivro.model.vo.LivroVO;
-import com.votenolivro.service.LivroService;
-import com.votenolivro.service.PessoaService;
+import com.votenolivro.service.LivroServiceImpl;
+import com.votenolivro.service.PessoaServiceImpl;
 
 @Controller
 @RequestMapping(value = "livro")
@@ -25,9 +25,9 @@ public class LivroController extends ProjetoController {
 	@Autowired
 	private LivroConverter livroConverter;
 	@Autowired
-	private LivroService livroService;
+	private LivroServiceImpl livroService;
 	@Autowired
-	private PessoaService pessoaService;
+	private PessoaServiceImpl pessoaService;
 	
 	private static final String LIVRO = "livro";
 	private static final String REDIRECT = "redirect:/livro/";
@@ -70,5 +70,20 @@ public class LivroController extends ProjetoController {
 		}
 		Pessoa pessoaPersitida = pessoaService.processarVotos(pessoa,livroConverter.convertToListModel(livros));
 		return REDIRECT_RANKING+pessoaPersitida.getId();
+	}
+	
+	
+	
+	public void setLivroConverter(LivroConverter livroConverter) {
+		this.livroConverter = livroConverter;
+	}
+	
+	
+	public void setLivroService(LivroServiceImpl livroService) {
+		this.livroService = livroService;
+	}
+	
+	public void setPessoaService(PessoaServiceImpl pessoaService) {
+		this.pessoaService = pessoaService;
 	}
 }

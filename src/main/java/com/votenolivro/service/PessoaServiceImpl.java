@@ -14,10 +14,10 @@ import com.votenolivro.model.Pessoa;
 import com.votenolivro.repository.interfaces.IPessoaRepository;
 
 @Service
-public class PessoaService {
+public class PessoaServiceImpl {
 	
 	@Autowired
-	private LivroService livroService;
+	private LivroServiceImpl livroService;
 	
 	@Autowired
 	private IPessoaRepository pessoaRepository;
@@ -95,8 +95,11 @@ public class PessoaService {
 		return pessoaRepository.listarPessoaPorNomeEmail(nome,email);
 	}
 
+	public Pessoa getPessoa(Long idPessoa) {
+		return pessoaRepository.loadById(idPessoa);
+	}
 
-	public void setLivroService(LivroService livroService) {
+	public void setLivroService(LivroServiceImpl livroService) {
 		this.livroService = livroService;
 	}
 
@@ -104,7 +107,4 @@ public class PessoaService {
 		this.pessoaRepository = pessoaRepository;
 	}
 
-	public Pessoa getPessoa(Long idPessoa) {
-		return pessoaRepository.loadById(idPessoa);
-	}
 }

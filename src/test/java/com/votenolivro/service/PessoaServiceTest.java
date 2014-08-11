@@ -20,10 +20,10 @@ import com.votenolivro.repository.interfaces.IPessoaRepository;
 
 public class PessoaServiceTest {
 
-	PessoaService pessoaService = new PessoaService();
+	PessoaServiceImpl pessoaService = new PessoaServiceImpl();
 	
 	@Mock
-	private LivroService livroService;
+	private LivroServiceImpl livroService;
 	@Mock
 	private IPessoaRepository pessoaRepository;
 	

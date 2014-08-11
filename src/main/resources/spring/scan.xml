@@ -25,9 +25,9 @@
 
 	<!-- Carrega os Beans DAO Hibernate -->
 	<context:component-scan base-package="com.votenolivro.controller" />
+	<context:component-scan base-package="com.votenolivro.converters" />
 	<context:component-scan base-package="com.votenolivro.model" />
 	<context:component-scan base-package="com.votenolivro.repository" />
 	<context:component-scan base-package="com.votenolivro.service" />
-	<context:component-scan base-package="com.votenolivro.converters" />
 	<aop:aspectj-autoproxy />
 </beans>

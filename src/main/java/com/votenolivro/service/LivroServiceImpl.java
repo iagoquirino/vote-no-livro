@@ -12,7 +12,7 @@ import com.votenolivro.model.Livro;
 import com.votenolivro.repository.interfaces.ILivroRepository;
 
 @Service
-public class LivroService {
+public class LivroServiceImpl {
 	@Autowired
 	private ILivroRepository livroRepository;
 	private int TOTAL_DE_LIVROS = 2;
@@ -96,4 +96,6 @@ public class LivroService {
 	public List<Livro> listarTodos() {
 		return livroRepository.listAll();
 	}
+	
+	
 }
