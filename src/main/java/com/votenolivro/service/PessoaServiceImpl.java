@@ -109,4 +109,15 @@ public class PessoaServiceImpl {
 		this.pessoaRepository = pessoaRepository;
 	}
 
+	public void cargaPessoa() {
+		List<Pessoa> listPessoas = new ArrayList<Pessoa>();
+		listPessoas.add(new Pessoa("teste", "teste"));
+		listPessoas.add(new Pessoa("teste1", "teste1"));
+		listPessoas.add(new Pessoa("teste2", "teste2"));
+		listPessoas.add(new Pessoa("teste3", "teste3"));
+		listPessoas.add(new Pessoa("teste4", "teste4"));
+		pessoaRepository.saveOrUpdateAll(listPessoas);
+		
+	}
+
 }

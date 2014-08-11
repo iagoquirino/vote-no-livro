@@ -20,8 +20,6 @@ import com.votenolivro.repository.interfaces.IBaseRepositoryHibernate;
 @Transactional
 public abstract class BaseRepositoryHibernate<T> extends HibernateDaoSupport implements IBaseRepositoryHibernate<T>{
 	
-//	private HibernateTemplate hibernateTemplate;
-	
 	protected abstract Class<T> getEntityClass();
 	
 	public T findOneByCriterion( Criterion... criterion )
@@ -143,19 +141,9 @@ public abstract class BaseRepositoryHibernate<T> extends HibernateDaoSupport imp
 		return sqlQuery.executeUpdate();
 	}
 	
-	
 	@Autowired
 	public void init(@Qualifier(value="sessionFactory")SessionFactory factory) {
 	    setSessionFactory(factory);
 	}
 	
-//	@Autowired
-//	public void setSessionFactory(SessionFactory sessionFactory){
-//		hibernateTemplate = new HibernateTemplate(sessionFactory);
-//	}
-//	
-//	public HibernateTemplate getHibernateTemplate() {
-//		return hibernateTemplate;
-//	}
-
 }

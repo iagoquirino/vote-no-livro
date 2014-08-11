@@ -9,8 +9,6 @@ public class ProjetoController {
 
 	@ExceptionHandler(value=Exception.class)
     public String tratarErro(Exception exception,ModelMap model, HttpServletResponse response){
-		exception.printStackTrace();
-		model.addAttribute("err", exception.getMessage());
 		return "erro";
     }
 	

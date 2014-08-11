@@ -98,6 +98,26 @@ public class LivroServiceImpl {
 	public List<Livro> listarTodos() {
 		return livroRepository.listAll();
 	}
+
+	public void cargaLivros() {
+		List<Livro> list = new ArrayList<Livro>();
+		Livro livro = new Livro();
+		livro.setNome("teste");
+		Livro livro1 = new Livro();
+		livro.setNome("teste1");
+		Livro livro2 = new Livro();
+		livro.setNome("teste2");
+		Livro livro3 = new Livro();
+		livro.setNome("teste3");
+		Livro livro4 = new Livro();
+		livro.setNome("teste4");
+		list.add(livro);
+		list.add(livro1);
+		list.add(livro2);
+		list.add(livro3);
+		list.add(livro4);
+		livroRepository.saveOrUpdateAll(list);
+	}
 	
 	
 }
