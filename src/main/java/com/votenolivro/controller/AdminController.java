@@ -22,13 +22,13 @@ public class AdminController extends ProjetoController {
 	
 	@RequestMapping(value = "/cargaLivros", method = RequestMethod.GET)
 	public String cargaLivros(){
-		livroService.cargaLivros();
+//		livroService.cargaLivros();
 		return "admin";
 	}
 	
 	@RequestMapping(value = "/cargaPessoas", method = RequestMethod.GET)
 	public String cargaPessoas(){
-		pessoaService.cargaPessoa();
+//		pessoaService.cargaPessoa();
 		return "admin";
 	}
 	
