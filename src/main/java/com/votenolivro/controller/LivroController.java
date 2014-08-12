@@ -67,7 +67,12 @@ public class LivroController extends ProjetoController {
 		pessoaService.processarVotos(pessoaConverter.convertToModel(pessoa),livroConverter.convertToListModel(livros));
 		
 		Pessoa pessoaPersistida = pessoaService.getPessoa(pessoa.getNome(),pessoa.getEmail());
-		return REDIRECT_RANKING+pessoaPersistida.getId().toString();
+		if(pessoaPersistida != null){
+			return REDIRECT_RANKING+pessoaPersistida.getId().toString();	
+		}else
+		{
+			return REDIRECT_RANKING;	
+		}
 	}
 	
 	
