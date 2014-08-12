@@ -4,7 +4,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.votenolivro.model.Pessoa;
+import com.votenolivro.model.pessoa.Pessoa;
 import com.votenolivro.model.vo.PessoaVO;
 
 @Component

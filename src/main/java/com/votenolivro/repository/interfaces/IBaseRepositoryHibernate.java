@@ -33,4 +33,5 @@ public interface IBaseRepositoryHibernate<T> {
 	
 	int executeUpdate(String sql);
 
+	void flush();
 }

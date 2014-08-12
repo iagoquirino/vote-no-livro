@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
-import com.votenolivro.model.Livro;
-import com.votenolivro.model.LivroVotado;
+import com.votenolivro.model.livros.Livro;
+import com.votenolivro.model.livros.LivroVotado;
 import com.votenolivro.model.vo.LivroVO;
 
 @Component

@@ -5,7 +5,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.votenolivro.model.Pessoa;
+import com.votenolivro.model.pessoa.Pessoa;
 import com.votenolivro.repository.interfaces.IPessoaRepository;
 
 @Repository

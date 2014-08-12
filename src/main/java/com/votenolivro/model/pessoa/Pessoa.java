@@ -1,15 +1,18 @@
-package com.votenolivro.model;
+package com.votenolivro.model.pessoa;
 
 import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import com.votenolivro.model.livros.LivroVotado;
 
 
 
@@ -30,7 +33,7 @@ public class Pessoa implements Serializable {
 	
 	private String email;
 	
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER,cascade = javax.persistence.CascadeType.ALL)
 	@JoinColumn(name="PESSOA_ID")
 	private List<LivroVotado> livros;
 

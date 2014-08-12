@@ -7,7 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.votenolivro.model.Pessoa;
+import com.votenolivro.model.pessoa.Pessoa;
 import com.votenolivro.model.vo.PessoaVO;
 
 public class PessoaConverterTest {

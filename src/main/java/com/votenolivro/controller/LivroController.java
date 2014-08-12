@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.votenolivro.converters.LivroConverter;
 import com.votenolivro.converters.PessoaConverter;
-import com.votenolivro.model.Pessoa;
+import com.votenolivro.model.pessoa.Pessoa;
 import com.votenolivro.model.vo.LivroVO;
 import com.votenolivro.model.vo.PessoaVO;
 import com.votenolivro.service.LivroServiceImpl;
@@ -47,15 +47,6 @@ public class LivroController extends ProjetoController {
 		return LIVRO;
 	}
 	
-	@RequestMapping(value = "/teste")
-	public String teste(ModelMap model)
-	{
-		model.addAttribute("livros", livroConverter.convertToListVO(livroService.listarTodos()));
-		model.addAttribute("livro", new LivroVO());
-		model.addAttribute("pessoa", new PessoaVO());
-		return LIVRO;
-	}
-	
 	@RequestMapping(value = "/votar", method = RequestMethod.POST)
     public String votar( @ModelAttribute(value = "livro") LivroVO livroVO, ModelMap model) {
 		List<LivroVO> livros = new ArrayList<LivroVO>();
@@ -73,8 +64,10 @@ public class LivroController extends ProjetoController {
 		if(model.containsAttribute("livrosVotados")){
 			livros = (List<LivroVO>)model.get("livrosVotados");
 		}
-		Pessoa pessoaPersitida = pessoaService.processarVotos(pessoaConverter.convertToModel(pessoa),livroConverter.convertToListModel(livros));
-		return REDIRECT_RANKING+pessoaPersitida.getId().toString();
+		pessoaService.processarVotos(pessoaConverter.convertToModel(pessoa),livroConverter.convertToListModel(livros));
+		
+		Pessoa pessoaPersistida = pessoaService.getPessoa(pessoa.getNome(),pessoa.getEmail());
+		return REDIRECT_RANKING+pessoaPersistida.getId().toString();
 	}
 	
 	

@@ -141,6 +141,10 @@ public abstract class BaseRepositoryHibernate<T> extends HibernateDaoSupport imp
 		return sqlQuery.executeUpdate();
 	}
 	
+	public void flush(){
+		getHibernateTemplate().flush();
+	}
+	
 	@Autowired
 	public void init(@Qualifier(value="sessionFactory")SessionFactory factory) {
 	    setSessionFactory(factory);

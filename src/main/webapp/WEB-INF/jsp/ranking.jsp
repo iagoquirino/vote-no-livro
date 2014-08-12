@@ -4,7 +4,6 @@
 <%@taglib tagdir="/WEB-INF/tags" prefix="votenolivro"%>
 <votenolivro:layout>
 			<section>
-				<c:url var="votar" value="/livro/" />
 				<p>Confira o Ranking dos Livros!</p>
 			
 				<c:if  test="${not empty pessoa}">
@@ -12,7 +11,7 @@
 					<c:forEach items="${pessoa.livros}" var="livro" varStatus="status">
 						<ul>
 							<li>
-								${livro.nome}
+								${livro.nome} - ${livro.totalVoto} Voto(s)
 							</li>
 						</ul>
 					</c:forEach>
@@ -22,12 +21,11 @@
 					<c:forEach items="${livros}" var="livro" varStatus="status">
 						<ul>
 							<li>
-								${livro.nome}
+								${livro.nome} - ${livro.totalVoto} Voto(s)
 							</li>
 						</ul>
 					</c:forEach>
 				</c:if>
-				
-				<input type="button" class="btn btn-1 btn-1b" value="Voltar" onclick="window.location.href = '${voltar}'" />
+				<p><a href="<c:url value="/livro/"/>">VOLTAR!</a></p>
 			</section>
 </votenolivro:layout>

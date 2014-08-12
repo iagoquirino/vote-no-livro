@@ -1,4 +1,4 @@
-package com.votenolivro.model;
+package com.votenolivro.model.livros;
 
 import java.io.Serializable;
 
@@ -23,7 +23,7 @@ public class LivroVotado implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="LIVROVOT_SEQ")
 	private Long id;
 	
-	@OneToOne
+	@OneToOne(cascade = javax.persistence.CascadeType.REFRESH)
 	@JoinColumn(name="LIVRO_ID", nullable=false)
 	private Livro livro;
 	

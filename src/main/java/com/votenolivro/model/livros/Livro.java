@@ -1,4 +1,4 @@
-package com.votenolivro.model;
+package com.votenolivro.model.livros;
 
 import java.io.Serializable;
 

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.votenolivro.converters.LivroConverter;
 import com.votenolivro.converters.PessoaConverter;
-import com.votenolivro.model.Pessoa;
+import com.votenolivro.model.pessoa.Pessoa;
 import com.votenolivro.model.vo.LivroVO;
 import com.votenolivro.model.vo.PessoaVO;
 import com.votenolivro.service.LivroServiceImpl;

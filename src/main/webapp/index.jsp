@@ -8,6 +8,5 @@
     <meta http-equiv="REFRESH" content="0;url=<c:url value="/livro/"/>">
 </head>
 <body>
-		TESTE
 </body>
 </html>

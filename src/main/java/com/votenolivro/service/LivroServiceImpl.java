@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.votenolivro.model.Livro;
+import com.votenolivro.model.livros.Livro;
 import com.votenolivro.repository.interfaces.ILivroRepository;
 
 @Service
@@ -102,15 +102,15 @@ public class LivroServiceImpl {
 	public void cargaLivros() {
 		List<Livro> list = new ArrayList<Livro>();
 		Livro livro = new Livro();
-		livro.setNome("teste");
+		livro.setNome("Harry Potter");
 		Livro livro1 = new Livro();
-		livro.setNome("teste1");
+		livro1.setNome("Senhor dos Aneis");
 		Livro livro2 = new Livro();
-		livro.setNome("teste2");
+		livro2.setNome("50 tons de cinza");
 		Livro livro3 = new Livro();
-		livro.setNome("teste3");
+		livro3.setNome("Diario de um Banana");
 		Livro livro4 = new Livro();
-		livro.setNome("teste4");
+		livro4.setNome("Turma da Monica O Livro");
 		list.add(livro);
 		list.add(livro1);
 		list.add(livro2);

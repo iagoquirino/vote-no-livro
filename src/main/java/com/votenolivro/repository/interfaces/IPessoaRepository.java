@@ -1,6 +1,6 @@
 package com.votenolivro.repository.interfaces;
 
-import com.votenolivro.model.Pessoa;
+import com.votenolivro.model.pessoa.Pessoa;
 
 public interface IPessoaRepository extends IBaseRepositoryHibernate<Pessoa> {
 

@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -18,8 +17,8 @@ import org.mockito.MockitoAnnotations;
 import com.votenolivro.converters.LivroConverter;
 import com.votenolivro.converters.PessoaConverter;
 import com.votenolivro.exception.DAOException;
-import com.votenolivro.model.Livro;
-import com.votenolivro.model.Pessoa;
+import com.votenolivro.model.livros.Livro;
+import com.votenolivro.model.pessoa.Pessoa;
 import com.votenolivro.model.vo.LivroVO;
 import com.votenolivro.model.vo.PessoaVO;
 import com.votenolivro.service.LivroServiceImpl;
@@ -77,22 +76,14 @@ public class LivroControllerTest extends BaseControllerTest{
 	
 	@Test
 	public void devePersitirPessoaERedirecionarParaORanking() throws Exception{
-		Mockito.when(pessoaService.processarVotos(Mockito.any(Pessoa.class), Mockito.anyList())).thenReturn(new Pessoa(1L, "teste", "teste"));
+		Mockito.when(pessoaService.getPessoa(Mockito.anyString(), Mockito.anyString())).thenReturn(new Pessoa(1L, "teste", "teste"));
     	String JSP_PAGE = "livro";
 		getMockMvc().perform(post(LIVRO_CALL+"computarvotos").sessionAttr("pessoa", new PessoaVO()))
                 .andExpect(status().isMovedTemporarily())
                 .andExpect(redirectedUrl("/ranking/mostrar-ranking/1"));
 		Mockito.verify(livroConverter).convertToListModel(Mockito.anyList());
 		Mockito.verify(pessoaConverter).convertToModel(Mockito.any(PessoaVO.class));
-	}
-	
-	@Test
-	public void deveIrParaPaginaDeErroQuandoExeception() throws Exception{
-		Mockito.when(livroService.listarLivrosParaVotar()).thenThrow(new DAOException(Livro.class, ""));
-    	String JSP_PAGE = "erro";
-		getMockMvc().perform(get(LIVRO_CALL))
-                .andExpect(status().isOk())
-                .andExpect(forwardedUrl(JSP_PAGE));
+		Mockito.verify(pessoaService).processarVotos(Mockito.any(Pessoa.class), Mockito.anyList());
 	}
 	
 }

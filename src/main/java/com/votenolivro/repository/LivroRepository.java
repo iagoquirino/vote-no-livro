@@ -7,7 +7,7 @@ import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.votenolivro.model.Livro;
+import com.votenolivro.model.livros.Livro;
 import com.votenolivro.repository.interfaces.ILivroRepository;
 
 @Repository

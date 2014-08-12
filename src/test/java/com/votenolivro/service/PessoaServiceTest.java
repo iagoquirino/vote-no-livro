@@ -12,9 +12,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.votenolivro.model.Livro;
-import com.votenolivro.model.LivroVotado;
-import com.votenolivro.model.Pessoa;
+import com.votenolivro.model.livros.Livro;
+import com.votenolivro.model.livros.LivroVotado;
+import com.votenolivro.model.pessoa.Pessoa;
 import com.votenolivro.repository.interfaces.IPessoaRepository;
 
 
@@ -85,7 +85,7 @@ public class PessoaServiceTest {
 		pessoaService.processarVotos(pessoa, livros);
 		Mockito.verify(livroService).processarVotos(Mockito.eq(livros));
 		Mockito.verify(pessoaRepository).listarPessoaPorNomeEmail(Mockito.eq(pessoa.getNome()), Mockito.eq(pessoa.getEmail()));
-		Mockito.verify(pessoaRepository).saveOrUpdate(Mockito.argThat(matcherLivroPessoaNova));
+		Mockito.verify(pessoaRepository).merge(Mockito.argThat(matcherLivroPessoaNova));
 	}
 	
 	@Test
@@ -98,7 +98,7 @@ public class PessoaServiceTest {
 		pessoaService.processarVotos(pessoa, livros);
 		Mockito.verify(livroService).processarVotos(Mockito.eq(livros));
 		Mockito.verify(pessoaRepository).listarPessoaPorNomeEmail(Mockito.eq(pessoa.getNome()), Mockito.eq(pessoa.getEmail()));
-		Mockito.verify(pessoaRepository).saveOrUpdate(Mockito.argThat(matcherLivroPessoaEncontrada));
+		Mockito.verify(pessoaRepository).merge(Mockito.argThat(matcherLivroPessoaEncontrada));
 	}
 	
 

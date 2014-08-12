@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.votenolivro.model.Livro;
-import com.votenolivro.model.LivroVotado;
-import com.votenolivro.model.Pessoa;
+import com.votenolivro.model.livros.Livro;
+import com.votenolivro.model.livros.LivroVotado;
+import com.votenolivro.model.pessoa.Pessoa;
 import com.votenolivro.repository.interfaces.IPessoaRepository;
 
 @Service
@@ -24,7 +24,7 @@ public class PessoaServiceImpl {
 	@Autowired
 	private IPessoaRepository pessoaRepository;
 	
-	public Pessoa processarVotos(Pessoa pessoa, List<Livro> livros) throws Exception {
+	public void processarVotos(Pessoa pessoa, List<Livro> livros) throws Exception {
 		validar(pessoa);
 		Pessoa pessoaBanco = listarPessoaPorNomeEmail(pessoa.getNome(),pessoa.getEmail());
 		if(pessoaBanco != null){
@@ -32,7 +32,8 @@ public class PessoaServiceImpl {
 		}
 		livroService.processarVotos(livros);
 		processarVotoPessoa(pessoa,livros);
-		return pessoaRepository.saveOrUpdate(pessoa);
+		pessoaRepository.merge(pessoa);
+		pessoaRepository.flush();
 	}
 	
 	private void processarVotoPessoa(Pessoa pessoa, List<Livro> livros) {
@@ -118,6 +119,10 @@ public class PessoaServiceImpl {
 		listPessoas.add(new Pessoa("teste4", "teste4"));
 		pessoaRepository.saveOrUpdateAll(listPessoas);
 		
+	}
+
+	public Pessoa getPessoa(String nome, String email) {
+		return listarPessoaPorNomeEmail(nome, email);
 	}
 
 }

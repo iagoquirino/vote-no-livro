@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.votenolivro.model.Livro;
+import com.votenolivro.model.livros.Livro;
 import com.votenolivro.repository.interfaces.ILivroRepository;
 
 public class LivroServiceTest {
