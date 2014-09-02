@@ -40,7 +40,7 @@ public class LivroController extends ProjetoController {
 	private static final String REDIRECT_RANKING = "redirect:/ranking/mostrar-ranking/";
 	
 	@RequestMapping(value = "/")
-	public String init(ModelMap model)
+	public String init(ModelMap model) throws VoteNoLivroException
 	{
 		model.addAttribute("livros", livroConverter.convertToListVO(livroService.listarLivrosParaVotar()));
 		model.addAttribute("livro", new LivroVO());
