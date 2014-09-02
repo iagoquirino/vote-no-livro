@@ -89,7 +89,6 @@ public class PessoaServiceImpl {
 			throw new VoteNoLivroException("erro.invalido.nome");
 		}
 		if(pessoa.getEmail() == null || pessoa.getEmail().isEmpty()){
-//		if(StringUtils.isBlank(pessoa.getEmail())){
 			throw new VoteNoLivroException("erro.invalido.email");
 		}
 	}
