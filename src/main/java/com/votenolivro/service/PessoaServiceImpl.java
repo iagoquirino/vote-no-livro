@@ -25,7 +25,7 @@ public class PessoaServiceImpl {
 	@Autowired
 	private IPessoaRepository pessoaRepository;
 	
-	public void processarVotos(Pessoa pessoa, List<Livro> livros) throws Exception {
+	public void processarVotos(Pessoa pessoa, List<Livro> livros) throws VoteNoLivroException {
 		validar(pessoa);
 		Pessoa pessoaBanco = listarPessoaPorNomeEmail(pessoa.getNome(),pessoa.getEmail());
 		if(pessoaBanco != null){
@@ -81,7 +81,7 @@ public class PessoaServiceImpl {
 	}
 
 
-	private void validar(Pessoa pessoa) throws Exception {
+	private void validar(Pessoa pessoa) throws VoteNoLivroException {
 		if(pessoa == null){
 			throw new VoteNoLivroException("erro.invalido");
 		}

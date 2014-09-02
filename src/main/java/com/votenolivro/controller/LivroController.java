@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.votenolivro.converters.LivroConverter;
 import com.votenolivro.converters.PessoaConverter;
+import com.votenolivro.exception.VoteNoLivroException;
 import com.votenolivro.model.pessoa.Pessoa;
 import com.votenolivro.model.vo.LivroVO;
 import com.votenolivro.model.vo.PessoaVO;
@@ -59,13 +60,12 @@ public class LivroController extends ProjetoController {
 	}
 	
 	@RequestMapping(value = "/computarvotos", method = RequestMethod.POST)
-    public String computarVotos( @ModelAttribute(value = "pessoa") PessoaVO pessoa, ModelMap model) throws Exception {
+    public String computarVotos( @ModelAttribute(value = "pessoa") PessoaVO pessoa, ModelMap model) throws VoteNoLivroException {
 		List<LivroVO> livros = new ArrayList<LivroVO>();
 		if(model.containsAttribute("livrosVotados")){
 			livros = (List<LivroVO>)model.get("livrosVotados");
 		}
 		pessoaService.processarVotos(pessoaConverter.convertToModel(pessoa),livroConverter.convertToListModel(livros));
-		
 		Pessoa pessoaPersistida = pessoaService.getPessoa(pessoa.getNome(),pessoa.getEmail());
 		if(pessoaPersistida != null){
 			return REDIRECT_RANKING+pessoaPersistida.getId().toString();	
