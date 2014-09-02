@@ -75,12 +75,9 @@ public class LivroController extends ProjetoController {
 		}
 	}
 	
-	
-	
 	public void setLivroConverter(LivroConverter livroConverter) {
 		this.livroConverter = livroConverter;
 	}
-	
 	
 	public void setLivroService(LivroServiceImpl livroService) {
 		this.livroService = livroService;

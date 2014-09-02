@@ -80,7 +80,6 @@ public class PessoaServiceImpl {
 		return listLivrosVotados;
 	}
 
-
 	private void validar(Pessoa pessoa) throws VoteNoLivroException {
 		if(pessoa == null){
 			throw new VoteNoLivroException("erro.invalido");
@@ -92,7 +91,6 @@ public class PessoaServiceImpl {
 			throw new VoteNoLivroException("erro.invalido.email");
 		}
 	}
-
 
 	private Pessoa listarPessoaPorNomeEmail(String nome,String email) {
 		return pessoaRepository.listarPessoaPorNomeEmail(nome,email);
@@ -108,17 +106,6 @@ public class PessoaServiceImpl {
 
 	public void setPessoaRepository(IPessoaRepository pessoaRepository) {
 		this.pessoaRepository = pessoaRepository;
-	}
-
-	public void cargaPessoa() {
-		List<Pessoa> listPessoas = new ArrayList<Pessoa>();
-		listPessoas.add(new Pessoa("teste", "teste"));
-		listPessoas.add(new Pessoa("teste1", "teste1"));
-		listPessoas.add(new Pessoa("teste2", "teste2"));
-		listPessoas.add(new Pessoa("teste3", "teste3"));
-		listPessoas.add(new Pessoa("teste4", "teste4"));
-		pessoaRepository.saveOrUpdateAll(listPessoas);
-		
 	}
 
 	public Pessoa getPessoa(String nome, String email) {
