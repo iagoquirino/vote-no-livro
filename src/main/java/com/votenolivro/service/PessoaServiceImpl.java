@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.votenolivro.exception.VoteNoLivroException;
 import com.votenolivro.model.livros.Livro;
 import com.votenolivro.model.livros.LivroVotado;
 import com.votenolivro.model.pessoa.Pessoa;
@@ -82,14 +83,14 @@ public class PessoaServiceImpl {
 
 	private void validar(Pessoa pessoa) throws Exception {
 		if(pessoa == null){
-			throw new Exception("");
+			throw new VoteNoLivroException("erro.invalido");
 		}
 		if(pessoa.getNome() == null || pessoa.getNome().isEmpty()){
-			throw new Exception("");
+			throw new VoteNoLivroException("erro.invalido.nome");
 		}
 		if(pessoa.getEmail() == null || pessoa.getEmail().isEmpty()){
 //		if(StringUtils.isBlank(pessoa.getEmail())){
-			throw new Exception("");
+			throw new VoteNoLivroException("erro.invalido.email");
 		}
 	}
 
